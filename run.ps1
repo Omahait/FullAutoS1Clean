@@ -16,9 +16,9 @@ net user AdminUser P@ssw0rd! /add /Y
 net localgroup Administrators AdminUser /add
 
 #Configure auto-logon for the new admin account
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "*AutoAdminLogon" /t REG_SZ /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "*DefaultUsername" /t REG_SZ /d AdminUser /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "*DefaultPassword" /t REG_SZ /d P@ssw0rd! /f
+$Username = "AdminUser"
+$Password = "P@ssw0rd!"
+Start-Process $PSScriptRoot\Autologon64.exe $Username, $env:Computername, $Password
 
 #Remove progress bar for faster download
 $ProgressPreference = "SilentlyContinue"

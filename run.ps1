@@ -16,12 +16,12 @@ net user AdminUser P@ssw0rd! /add /Y
 net localgroup Administrators AdminUser /add
 
 #Download the AutoLogon64.exe
-powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest "https://github.com/Omahait/FullAutoS1Clean/blob/main/Autologon64.exe"  -OutFile C:\TEMP\AutoLogon64.exe
+powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest "https://github.com/Omahait/FullAutoS1Clean/blob/main/Autologon64.exe"  -OutFile C:\AutoLogon64.exe
 
 #Configure auto-logon for the new admin account
 $Username = "AdminUser"
 $Password = "P@ssw0rd!"
-Start-Process C:\TEMP\Autologon64.exe $Username, $env:Computername, $Password
+Start-Process $PSScriptRoot\Autologon64.exe $Username, $env:Computername, $Password
 
 #Remove progress bar for faster download
 $ProgressPreference = "SilentlyContinue"

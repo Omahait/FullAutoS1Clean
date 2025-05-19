@@ -29,11 +29,5 @@ powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion
 #Set the registry key that runs S1 cleanup
 powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce' /v '*Cleanup' /t REG_SZ /d 'C:\TEMP\s1.exe -c -t `"1`"' /f"
 
-#Configure auto-logon for the domain account
-powershell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultDomain' /t REG_SZ /d 'omahait.com' /f"
-powershell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultPassword' /t REG_SZ /d '122606!Tobey@' /f"
-powershell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultUsername' /t REG_SZ /d 'cwalters@omahait.com' /f"
-powershell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*AutoAdminLogon' /t REG_SZ /d '1' /f"
-
 #Reboots the system to allow safe mode to activate and the associated registry key actions to run
 shutdown /r /f /t 10

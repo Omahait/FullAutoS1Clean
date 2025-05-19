@@ -11,17 +11,11 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 #Make a directory for file storage
 mkdir C:\TEMP
 
-#Create local administrator account
-net user AdminUser P@ssw0rd! /add /Y
-net localgroup Administrators AdminUser /add
-
-#Download the AutoLogon64.exe
-powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest "https://github.com/Omahait/FullAutoS1Clean/blob/main/Autologon.exe"  -OutFile C:\AutoLogon.exe
-
-#Configure auto-logon for the new admin account
-$Username = "AdminUser"
-$Password = "P@ssw0rd!"
-Start-Process $PSScriptRoot\Autologon.exe $Username, $env:Computername, $Password
+#Configure auto-logon for the domain account
+powerhsell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultDomain' /t REG_SZ /d 'omahait.com' /f"
+powerhsell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultPassword' /t REG_SZ /d '122606!Tobey@' /f"
+powerhsell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*DefaultUsername' /t REG_SZ /d 'cwalters@omahait.com' /f"
+powerhsell.exe -command "reg add 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v '*AutoAdminLogon' /t REG_SZ /d '1' /f"
 
 #Remove progress bar for faster download
 $ProgressPreference = "SilentlyContinue"

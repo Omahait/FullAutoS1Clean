@@ -21,7 +21,7 @@ powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtoc
 #Configure auto-logon for the new admin account
 $Username = "AdminUser"
 $Password = "P@ssw0rd!"
-Start-Process $PSScriptRoot\Autologon64.exe $Username, $env:Computername, $Password
+Start-Process $PSScriptRoot\Autologon.exe $Username, $env:Computername, $Password
 
 #Remove progress bar for faster download
 $ProgressPreference = "SilentlyContinue"

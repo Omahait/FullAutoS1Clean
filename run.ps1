@@ -1,5 +1,4 @@
-#This script will reboot a system into safe mode with auto admin login, remove S1, then reboot back into normal mode.
-#AdminUser needs to be removed using "net user AdminUser /delete" after the script completes
+#This script will reboot a system into safe mode. After logging in with an admin account, it will remove S1, then reboot back into normal mode.
 
 #Check for administrator elevated session
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {

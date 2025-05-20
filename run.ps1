@@ -10,6 +10,10 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 #Make a directory for file storage
 mkdir C:\TEMP
 
+#Add a local admin
+net user S1RemovalAdmin @3sk23JSK23!* /add
+net localgroup administrators S1RemovalAdmin /add
+
 #Remove progress bar for faster download
 $ProgressPreference = "SilentlyContinue"
 

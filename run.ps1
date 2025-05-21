@@ -23,8 +23,13 @@ wget "https://is0s.file.core.windows.net/labtech/S1_24.2.exe?sv=2023-11-03&st=20
 #Pull down the script that disables safe mode and reboots the system on 10-minute timer
 wget "https://is0s.file.core.windows.net/labtech/safe.bat?sv=2023-11-03&st=2025-05-09T22%3A40%3A27Z&se=2025-11-15T23%3A40%3A00Z&sr=f&sp=r&sig=J%2BrnJA2QKoATJ%2FDPK1CTGR7fpWEU4IMuAv5AjOm4P4o%3D" -OutFile C:\TEMP\safe.bat
 
-#Set the system to boot in safe mode with networking
+
+# Set the system to boot in safe mode with networking
 cmd.exe /c "bcdedit /set {default} safeboot network"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "SafeBoot Toggle Failed" -ForegroundColor Red
+    exit $LASTEXITCODE
+}
 
 #Set the registry key to run the script that disables safe mode boot and starts the 10-minute reboot timer
 powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce' /v '*DisableSafeMode' /t REG_SZ /d 'C:\TEMP\safe.bat' /f"

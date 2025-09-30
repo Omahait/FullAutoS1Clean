@@ -21,7 +21,7 @@ $ProgressPreference = "SilentlyContinue"
 wget "https://is0s.file.core.windows.net/labtech/S1_24.2.exe?sv=2023-11-03&st=2025-05-09T22%3A20%3A32Z&se=2026-05-30T22%3A20%3A00Z&sr=f&sp=r&sig=V4M7qOd4Lg6ZcOBhYCSv9xJ2W3EAO752TwL1JVEtd3A%3D" -OutFile C:\TEMP\s1.exe
 
 #Pull down the script that disables safe mode and reboots the system on 10-minute timer
-wget "https://is0s.file.core.windows.net/labtech/safe.bat?sv=2023-11-03&st=2025-05-09T22%3A40%3A27Z&se=2025-11-15T23%3A40%3A00Z&sr=f&sp=r&sig=J%2BrnJA2QKoATJ%2FDPK1CTGR7fpWEU4IMuAv5AjOm4P4o%3D" -OutFile C:\TEMP\safe.bat
+wget "https://github.com/Omahait/FullAutoS1Clean/blob/main/safe.bat" -OutFile C:\TEMP\safe.bat
 
 
 # Set the system to boot in safe mode with networking
@@ -39,4 +39,5 @@ powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion
 
 #Reboots the system to allow safe mode to activate and the associated registry key actions to run
 shutdown /r /f /t 5
+
 

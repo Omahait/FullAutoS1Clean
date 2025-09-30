@@ -38,4 +38,5 @@ powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion
 powershell.exe -command "reg add 'HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce' /v '*Cleanup' /t REG_SZ /d 'C:\TEMP\s1.exe -c -t `"1`"' /f"
 
 #Reboots the system to allow safe mode to activate and the associated registry key actions to run
-shutdown /r /f /t 10
+shutdown /r /f /t 5
+

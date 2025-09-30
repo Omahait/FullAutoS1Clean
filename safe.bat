@@ -5,4 +5,5 @@ cls
 bcdedit /deletevalue {default} safeboot
  
 :: Reboot the system
-shutdown /r /f /t 60
+shutdown /r /f /t 300
+
